@@ -15,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {
        
         let container = NSPersistentContainer(name: "DataModel")
-        container.loadPersistentStores(completionHandler: {
-            storeDescription, error in
+        container.loadPersistentStores {
+            (storeDescription, error) in
             if let error = error {
                 fatalError("Could load data sotre: \(error)")
             }
-        })
+        }
         return container
     }()
     
