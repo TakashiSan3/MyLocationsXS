@@ -167,6 +167,52 @@
             </objects>
             <point key="canvasLocation" x="1462.5" y="397.18309859154931"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="FPh-RX-2fi">
+            <objects>
+                <viewController id="2aq-1S-RHy" customClass="MapViewController" customModule="MyLocationsXS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hjf-Ad-7Kd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-WX-re7">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2aq-1S-RHy" id="hXl-rl-kYe"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hW9-WX-re7" firstAttribute="leading" secondItem="NZB-1K-AjT" secondAttribute="leading" id="2bo-jF-d94"/>
+                            <constraint firstAttribute="bottom" secondItem="hW9-WX-re7" secondAttribute="bottom" id="OOU-d2-9VH"/>
+                            <constraint firstItem="hW9-WX-re7" firstAttribute="trailing" secondItem="NZB-1K-AjT" secondAttribute="trailing" id="QBS-3j-si3"/>
+                            <constraint firstItem="hW9-WX-re7" firstAttribute="top" secondItem="NZB-1K-AjT" secondAttribute="top" id="y1e-RC-xbT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NZB-1K-AjT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="klC-O7-MYN">
+                        <barButtonItem key="leftBarButtonItem" title="Location" id="wWm-TQ-cIP">
+                            <connections>
+                                <action selector="showLocations" destination="2aq-1S-RHy" id="1rb-B3-huG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="User" id="Oaa-mL-iph">
+                            <connections>
+                                <action selector="showUser" destination="2aq-1S-RHy" id="ewy-73-1iK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="hW9-WX-re7" id="9qN-KB-ulf"/>
+                        <outlet property="view" destination="hW9-WX-re7" id="bFN-0K-sW9"/>
+                        <segue destination="VRy-Vj-hTr" kind="show" identifier="EditLocation" id="VhP-7x-ZiU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ym0-Ai-Nki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1463" y="1157"/>
+        </scene>
         <!--Location-->
         <scene sceneID="yyu-ln-uob">
             <objects>
@@ -460,11 +506,12 @@
                     <connections>
                         <segue destination="wyG-gY-Kce" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="snM-Jn-7zu" kind="relationship" relationship="viewControllers" id="pb1-WS-9je"/>
+                        <segue destination="XSs-yh-fXn" kind="relationship" relationship="viewControllers" id="Xx2-hv-ief"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-51" y="396"/>
         </scene>
         <!--Tag-->
         <scene sceneID="zk6-Ar-YGC">
@@ -485,9 +532,28 @@
             </objects>
             <point key="canvasLocation" x="748.125" y="-321.12676056338029"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="eh6-uA-m84">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XSs-yh-fXn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="yXT-Jk-TcB"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="60Z-lM-lMy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2aq-1S-RHy" kind="relationship" relationship="rootViewController" id="eib-UE-cuz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twb-YX-Caz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="1157"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Yoy-xF-oKB"/>
+        <segue reference="VhP-7x-ZiU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="first" width="30" height="30"/>
