@@ -86,6 +86,7 @@ class CurrentLocationViewController: UIViewController,
                 if distance > 0 {
                     performingReverseGeocoding = false
                 }
+                updateLabels()
             }
             updateLabels()
             
