@@ -24,6 +24,7 @@
 		787D70A32263176D007815B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A12263176D007815B2 /* Main.storyboard */; };
 		787D70A522631770007815B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A422631770007815B2 /* Assets.xcassets */; };
 		787D70A822631770007815B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A622631770007815B2 /* LaunchScreen.storyboard */; };
+		78B3984024667F4A00D8A461 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		787D70A422631770007815B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		787D70A722631770007815B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		787D70A922631770007815B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				780A4D4E24614F73001561C6 /* LocationsViewController.swift */,
 				780A4D5024616339001561C6 /* LocationCell.swift */,
 				780A4D552462527F001561C6 /* MapViewController.swift */,
+				78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */,
 			);
 			path = MyLocationsXS;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				780A6CF422D2212500F9AEC4 /* Location+CoreDataProperties.swift in Sources */,
 				780A4D4F24614F73001561C6 /* LocationsViewController.swift in Sources */,
 				780A4D562462527F001561C6 /* MapViewController.swift in Sources */,
+				78B3984024667F4A00D8A461 /* UIImage+Resize.swift in Sources */,
 				780A4D5124616339001561C6 /* LocationCell.swift in Sources */,
 				7842ACEB2296D228009A976C /* Functions.swift in Sources */,
 				787D709C2263176D007815B2 /* AppDelegate.swift in Sources */,

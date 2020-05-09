@@ -22,6 +22,9 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var addPhotoLabel: UILabel!
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
 
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
@@ -40,6 +43,13 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     var descriptionText = ""
+    var image: UIImage?
+    var observer: Any!
+    
+    deinit {
+        print("*** deinit\(self)")
+        NotificationCenter.default.removeObserver(observer!)
+    }
     
     @IBAction func done() {
         
@@ -52,6 +62,7 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         } else {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
         
         location.locationDescription = descriptionTextView.text
@@ -70,6 +81,22 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         } catch {
             fatalCoreDataError(error)
         }
+        
+        // Save image
+        if let image = image {
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            
+            if let data = image.jpegData(compressionQuality: 0.5) {
+                do {
+                    print("\(location.photoURL)")
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
     }
     
     @IBAction func cancel() {
@@ -87,6 +114,11 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         
         if let location = locationToEdit {
             title = "Edit Location"
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+            }
         }
 
         descriptionTextView.text = descriptionText
@@ -107,6 +139,7 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
 
+        listenForBackgourndNotification()
     }
     
     //MARK:- Navigation
@@ -166,6 +199,28 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
+    // MARK:- private Methods
+    func show(image: UIImage) {
+        imageView.image = image
+        imageView.isHidden = false
+        addPhotoLabel.text = ""
+        imageHeight.constant = 260
+        tableView.reloadData()
+    }
+    
+    func listenForBackgourndNotification() {
+        observer = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) { [weak self ] _ in
+            
+            if let weakSelf = self {
+                if weakSelf.presentedViewController != nil {
+                    weakSelf.dismiss(animated: false, completion: nil)
+                }
+                weakSelf.descriptionTextView.resignFirstResponder()
+            }
+        }
+    }
+    
+    
     //MARK:- Selector
     @objc func hideKeyBoard(_ gestrueRecognizer: UIGestureRecognizer) {
         let point = gestrueRecognizer.location(in: tableView)
@@ -201,6 +256,12 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     // MARK:- Image Picker Delegates
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        
+        if let theImage = image {
+            show(image: theImage)
+        }
         dismiss(animated: true, completion: nil)
     }
     
