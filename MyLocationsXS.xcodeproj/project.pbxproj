@@ -20,11 +20,13 @@
 		787B940B22830EC000A14ED9 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B940A22830EC000A14ED9 /* CategoryPickerViewController.swift */; };
 		787D709C2263176D007815B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D709B2263176D007815B2 /* AppDelegate.swift */; };
 		787D709E2263176D007815B2 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D709D2263176D007815B2 /* CurrentLocationViewController.swift */; };
-		787D70A02263176D007815B2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D709F2263176D007815B2 /* SecondViewController.swift */; };
 		787D70A32263176D007815B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A12263176D007815B2 /* Main.storyboard */; };
 		787D70A522631770007815B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A422631770007815B2 /* Assets.xcassets */; };
 		787D70A822631770007815B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787D70A622631770007815B2 /* LaunchScreen.storyboard */; };
 		78B3984024667F4A00D8A461 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */; };
+		78B398422466864600D8A461 /* String+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B398412466864600D8A461 /* String+AddText.swift */; };
+		78B398442466A77A00D8A461 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B398432466A77A00D8A461 /* MyTabBarController.swift */; };
+		78B398462466A95700D8A461 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B398452466A95700D8A461 /* MyImagePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +44,14 @@
 		787D70982263176D007815B2 /* MyLocationsXS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocationsXS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		787D709B2263176D007815B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		787D709D2263176D007815B2 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
-		787D709F2263176D007815B2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		787D70A22263176D007815B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		787D70A422631770007815B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		787D70A722631770007815B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		787D70A922631770007815B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		78B398412466864600D8A461 /* String+AddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AddText.swift"; sourceTree = "<group>"; };
+		78B398432466A77A00D8A461 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		78B398452466A95700D8A461 /* MyImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +99,6 @@
 				787D709B2263176D007815B2 /* AppDelegate.swift */,
 				787D709D2263176D007815B2 /* CurrentLocationViewController.swift */,
 				787B9408227BDBEF00A14ED9 /* LocationDetailsViewController.swift */,
-				787D709F2263176D007815B2 /* SecondViewController.swift */,
 				787D70A12263176D007815B2 /* Main.storyboard */,
 				787D70A422631770007815B2 /* Assets.xcassets */,
 				787D70A622631770007815B2 /* LaunchScreen.storyboard */,
@@ -108,6 +111,9 @@
 				780A4D5024616339001561C6 /* LocationCell.swift */,
 				780A4D552462527F001561C6 /* MapViewController.swift */,
 				78B3983F24667F4A00D8A461 /* UIImage+Resize.swift */,
+				78B398412466864600D8A461 /* String+AddText.swift */,
+				78B398432466A77A00D8A461 /* MyTabBarController.swift */,
+				78B398452466A95700D8A461 /* MyImagePickerController.swift */,
 			);
 			path = MyLocationsXS;
 			sourceTree = "<group>";
@@ -185,8 +191,8 @@
 			files = (
 				787B9409227BDBEF00A14ED9 /* LocationDetailsViewController.swift in Sources */,
 				780A6CF022D2037100F9AEC4 /* DataModel.xcdatamodeld in Sources */,
-				787D70A02263176D007815B2 /* SecondViewController.swift in Sources */,
 				7842ACE922959752009A976C /* HudView.swift in Sources */,
+				78B398462466A95700D8A461 /* MyImagePickerController.swift in Sources */,
 				780A6CF422D2212500F9AEC4 /* Location+CoreDataProperties.swift in Sources */,
 				780A4D4F24614F73001561C6 /* LocationsViewController.swift in Sources */,
 				780A4D562462527F001561C6 /* MapViewController.swift in Sources */,
@@ -195,8 +201,10 @@
 				7842ACEB2296D228009A976C /* Functions.swift in Sources */,
 				787D709C2263176D007815B2 /* AppDelegate.swift in Sources */,
 				780A6CF322D2212500F9AEC4 /* Location+CoreDataClass.swift in Sources */,
+				78B398422466864600D8A461 /* String+AddText.swift in Sources */,
 				787B940B22830EC000A14ED9 /* CategoryPickerViewController.swift in Sources */,
 				787D709E2263176D007815B2 /* CurrentLocationViewController.swift in Sources */,
+				78B398442466A77A00D8A461 /* MyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -152,27 +152,15 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
     
     //MARK:- Helper Methods
     func string(from placemark: CLPlacemark) -> String {
-        var text = ""
-
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.locality {
-            text += s + " "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s + " "
-        }
-        if let s = placemark.country {
-            text += s
-        }
-        return text
+        var line = ""
+        line.add(text: placemark.subThoroughfare)
+        line.add(text: placemark.thoroughfare, separateBy: " ")
+        line.add(text: placemark.locality, separateBy: ", ")
+        line.add(text: placemark.administrativeArea, separateBy: ", ")
+        line.add(text: placemark.postalCode, separateBy: " ")
+        line.add(text: placemark.country, separateBy: ", ")
+        
+        return line
     }
     
     func format(date: Date) -> String {
@@ -197,6 +185,12 @@ class LocationDetailsViewController: UITableViewController, NSFetchedResultsCont
             tableView.deselectRow(at: indexPath, animated: true)
             pickPhoto()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let selection = UIView(frame: CGRect.zero)
+        selection.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
+        cell.selectedBackgroundView = selection
     }
     
     // MARK:- private Methods
@@ -238,18 +232,20 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
     // MARK:- Image Helper Methods
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         present(imagePicker, animated: true, completion: nil)
     }
     
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         present(imagePicker, animated: true, completion: nil)
     }
     

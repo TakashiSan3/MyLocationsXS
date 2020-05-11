@@ -14,7 +14,14 @@ class LocationCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let selection = UIView(frame: CGRect.zero)
+        selection.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
+        selectedBackgroundView = selection
+        
+        // Rounded corner for images　なんかダサい
+//        photoImageView.layer.cornerRadius = photoImageView.bounds.size.width / 2
+//        photoImageView.clipsToBounds = true
+//        separatorInset = UIEdgeInsets(top: 0, left: 82, bottom: 0, right: 0)
     }
 
     // MARK:- Helper Methods
@@ -27,15 +34,9 @@ class LocationCell: UITableViewCell {
         
         if let placemark = location.placemark {
             var text = ""
-            if let s = placemark.subThoroughfare {
-                text += s + " "
-            }
-            if let s = placemark.thoroughfare {
-                text += s + ", "
-            }
-            if let s = placemark.locality {
-                text += s
-            }
+            text.add(text: placemark.subThoroughfare)
+            text.add(text: placemark.thoroughfare, separateBy: " ")
+            text.add(text: placemark.locality, separateBy: ", ")
             addressLabel.text = text
         } else {
             addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
@@ -48,7 +49,7 @@ class LocationCell: UITableViewCell {
         if location.hasPhoto, let image = location.photoImage {
             return image.resized(withBounds: CGSize(width: 52, height:52))
         } else {
-            return UIImage()
+            return UIImage(named: "No Photo")!
         }
     }
 

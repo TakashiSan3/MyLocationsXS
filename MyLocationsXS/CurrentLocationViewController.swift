@@ -17,6 +17,8 @@ class CurrentLocationViewController: UIViewController,
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var getButton: UIButton!
+    @IBOutlet weak var latitudeTextLabel: UILabel!
+    @IBOutlet weak var longitudeTextLabel: UILabel!
     
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
@@ -198,6 +200,9 @@ class CurrentLocationViewController: UIViewController,
             } else {
                 addressLabel.text = "No Address Finding"
             }
+            
+            latitudeTextLabel.isHidden = false
+            longitudeTextLabel.isHidden = false
         }
         else {
             latitudeLabel.text = ""
@@ -221,6 +226,9 @@ class CurrentLocationViewController: UIViewController,
                 statusMessage = "Tap 'Get My Location' to Start"
             }
             messageLabel.text = statusMessage
+            
+            latitudeTextLabel.isHidden = true
+            longitudeTextLabel.isHidden = true
         }
         configureGetButton()
     }
@@ -235,25 +243,17 @@ class CurrentLocationViewController: UIViewController,
     
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
-        if let s = placemark.subThoroughfare {
-            line1 += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            line1 += s
-        }
+        line1.add(text: placemark.subThoroughfare)
+        line1.add(text: placemark.thoroughfare, separateBy: " ")
         
         var line2 = ""
-        if let s = placemark.locality {
-            line2 += s + " "
-        }
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
-        if let s = placemark.postalCode {
-            line2 += s
-        }
+        line2.add(text: placemark.locality)
+        line2.add(text: placemark.administrativeArea, separateBy: " ")
+        line2.add(text: placemark.postalCode, separateBy: " ")
         
-        return line1 + "\n" + line2
+        line1.add(text: line2, separateBy: "\n")
+        
+        return line1
     }
     
     @objc func didTimeOut() {
